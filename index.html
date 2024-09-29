@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang=en ontouchmove>
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Happy birthday - Ishita</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css?family=Amatic+SC');
+    @import url('https://fonts.googleapis.com/css2?family=Caveat:wght@500&display=swap');
+
+    ::-webkit-scrollbar {
+      width: 0px;
+    }
+
+    body {
+      overflow-y: hidden;
+      overflow-x: scroll;
+      font-family: 'Caveat', cursive;
+      background: #85e7e2;
+      margin: 0px;
+      padding: 0px;
+    }
+
+    ::-moz-selection {
+      background: transparent;
+    }
+
+    ::selection {
+      background: transparent;
+    }
+
+    h4 {
+      font-size: 24px;
+      line-height: 1px;
+      white-space: nowrap;
+      font-family: 'Amatic SC', cursive !important;
+    }
+
+    .color1 {
+      color: #333
+    }
+
+    .color2 {
+      color: #C0392B
+    }
+
+    .card {
+      cursor: pointer;
+      opacity: 0;
+      color: #087e7e;
+      position: absolute;
+      top: 45%;
+      left: 50%;
+      width: 300px;
+      height: 400px;
+      background: #f1f1ef;
+      -webkit-transform-style: preserve-3d;
+      transform-style: preserve-3d;
+      -webkit-transform: translate(-50%, -50%) perspective(2000px);
+      transform: translate(-50%, -50%) perspective(2000px);
+      -webkit-box-shadow: inset 300px 0 50px rgba(0, 0, 0, .5), 20px 0 60px rgba(0, 0, 0, .5);
+      box-shadow: inset 300px 0 50px rgba(0, 0, 0, .5), 20px 0 60px rgba(0, 0, 0, .5);
+      -webkit-transition: 1s;
+      -o-transition: 1s;
+      transition: 1s;
+    }
+
+    .show {
+      top: 50%;
+      opacity: 1;
+    }
+
+    .card:hover {
+      -webkit-transform: translate(-50%, -50%) perspective(2000px) scale(1.2) rotate(-5deg);
+      transform: translate(-50%, -50%) perspective(2000px) scale(1.2) rotate(-5deg);
+      left: 53%;
+      -webkit-box-shadow: inset 15px 0 15px rgba(0, 0, 0, .5), 0 30px 100px rgba(0, 0, 0, .5);
+      box-shadow: inset 15px 0 15px rgba(0, 0, 0, .5), 0 30px 100px rgba(0, 0, 0, .5);
+    }
+
+    .card:before {
+      content: '';
+      position: absolute;
+      top: -5px;
+      left: 0;
+      width: 100%;
+      height: 5px;
+      background: #BAC1BA;
+      -webkit-transform-origin: bottom;
+      -ms-transform-origin: bottom;
+      transform-origin: bottom;
+      -webkit-transform: skewX(-45deg);
+      -ms-transform: skewX(-45deg);
+      transform: skewX(-45deg);
+      z-index: 0;
+    }
+
+    .card:after {
+      content: '';
+      position: absolute;
+      top: 0;
+      right: -5px;
+      width: 5px;
+      height: 100%;
+      background: #92A29C;
+      -webkit-transform-origin: left;
+      -ms-transform-origin: left;
+      transform-origin: left;
+      -webkit-transform: skewY(-45deg);
+      -ms-transform: skewY(-45deg);
+      transform: skewY(-45deg);
+    }
+
+    .love-area {
+      position: absolute;
+      width: 90px;
+      -webkit-transform: rotate(-20deg);
+      -ms-transform: rotate(-20deg);
+      transform: rotate(-20deg);
+      right: 17px;
+      top: 0px;
+    }
+
+    .love-area img {
+      width: 100%;
+      height: 100%;
+    }
+
+    .card .imgBox {
+      width: 100%;
+      height: 100%;
+      position: relative;
+      -webkit-transform-origin: left;
+      -ms-transform-origin: left;
+      transform-origin: left;
+      -webkit-transition: .7s;
+      -o-transition: .7s;
+      transition: .7s;
+    }
+
+    .card .bark {
+      position: absolute;
+      background: #e0e1dc;
+      width: 100%;
+      height: 100%;
+      opacity: 0;
+      -webkit-transition: .7s;
+      -o-transition: .7s;
+      transition: .7s;
+    }
+
+    .card .imgBox img {
+      min-width: 250px;
+      max-height: 400px;
+    }
+
+    .card:hover .imgBox {
+      -webkit-transform: rotateY(-135deg);
+      transform: rotateY(-135deg);
+    }
+
+    .card:hover .bark {
+      opacity: 1;
+      -webkit-transition: .6s;
+      -o-transition: .6s;
+      transition: .6s;
+      -webkit-box-shadow: 300px 200px 100px rgba(0, 0, 0, .4) inset;
+      box-shadow: 300px 200px 100px rgba(0, 0, 0, .4) inset;
+    }
+
+
+    .card:hover .love {
+      opacity: 1;
+      -webkit-transition: .6s;
+      -o-transition: .6s;
+      transition: .6s;
+      -webkit-transition-delay: 0.2s;
+      -o-transition-delay: 0.2s;
+      transition-delay: 0.2s;
+    }
+
+    .love {
+      position: absolute;
+      top: 43%;
+      height: 100%;
+      right: 45%;
+      font-size: 50px;
+      color: #333;
+      font-weight: 600;
+      opacity: 0;
+    }
+
+    .card .details {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      -webkit-box-sizing: border-box;
+      box-sizing: border-box;
+      padding: 0 15px 0 9px;
+      z-index: -1;
+      margin-top: 70px;
+    }
+
+    .img-area {
+      position: absolute;
+      width: 130px;
+      top: -80px;
+      left: -10px;
+      -webkit-animation: alternate chicken 3s infinite linear;
+      animation: alternate chicken 3s infinite linear;
+    }
+
+    .img-area img {
+      width: 100%;
+      height: 100%;
+    }
+
+    @-webkit-keyframes chicken {
+      0% {
+        -webkit-transform: rotate(-10deg);
+        transform: rotate(-10deg);
+      }
+
+      50% {
+        -webkit-transform: rotate(10deg);
+        transform: rotate(10deg);
+      }
+
+      100% {
+        -webkit-transform: rotate(-10deg);
+        transform: rotate(-10deg);
+      }
+    }
+
+    @keyframes chicken {
+      0% {
+        -webkit-transform: rotate(-10deg);
+        transform: rotate(-10deg);
+      }
+
+      50% {
+        -webkit-transform: rotate(10deg);
+        transform: rotate(10deg);
+      }
+
+      100% {
+        -webkit-transform: rotate(-10deg);
+        transform: rotate(-10deg);
+      }
+    }
+
+    .card .details p {
+      font-size: 16px;
+      line-height: 5px;
+      padding: 0 0 0 20px;
+      white-space: nowrap;
+    }
+
+    .card .details h4 {
+      text-align: center;
+      margin-left: 6px;
+    }
+
+    .text-right {
+      text-align: right;
+    }
+
+    .heart {
+      width: 8px;
+      height: 10px;
+      margin-left: 3px;
+      display: none;
+    }
+
+    .heart-text {
+      display: inline;
+    }
+
+    .chinese {
+      font-size: 14px !important;
+    }
+
+    @media screen and (max-width: 500px) {
+      .heart {
+        display: inline;
+      }
+
+      .heart-text {
+        display: none;
+      }
+
+      .card:hover {
+        left: 50%;
+      }
+
+
+      .card .details p {
+        font-size: 16px;
+        line-height: 5px;
+        padding: 0 0 0 20px;
+      }
+
+      .chinese {
+        font-size: 12px !important;
+        font-family: cursive !important;
+        font-style: italic;
+      }
+
+      h4 {
+        font-size: 18px;
+        line-height: 1px;
+        font-family: 'Amatic SC', cursive !important;
+      }
+    }
+  </style>
+</head>
+
+<body tabIndex=0>
+  <div class="card" onclick="hover()">
+    <!-- <div class="love-area">
+      <img src="love.png">
+    </div> -->
+    <div class="imgBox">
+      <div class="bark">
+        <div class="love">♥</div>
+      </div>
+      <img src="page.png">
+    </div>
+    <div class="details">
+      <div class="img-area">
+        <img src="chicken.png">
+      </div>
+      <h4 class="color1">－May today be as special as you are－</h2>
+        <h4 class="color2 margin">-HAPPY BIRTHDAY <span style="color:rgb(31, 143, 218)">Meri wifey</span>-</h3>
+          <p>Dear Ishita,</p>
+          <p class="english">Congratulations on turning one year older</p>
+          <p>But don’t worry. You don’t look your age</p>
+          <p>(7 saal ki lagti hai)!</p>
+          <p class="english">Every day I spend with you is happy and joyful</p>
+          <p>I will accompany you to make your </p>
+          <p>birthday wishes every year</p>
+          <p class="english">Thank you for always being by my side</p>
+          <p style="color: brown;">I love u <span class="heart-text"> ♥</span></p>
+          <p class="text-right">Your Khushjeet</p>
+          <p class="text-right"><span class="heart-text">♥</span><img class="heart" src="heart.png"></p>
+    </div>
+  </div>
+  <script>
+    setTimeout(() => {
+      document.querySelector('.card').classList.add("show");
+    }, 0)
+
+    function hover() {
+      document.querySelector('.card').classList.add("card-hover");
+    }
+  </script>
+</body>
+
+</html>
